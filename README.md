@@ -2,25 +2,34 @@
 
 ## Sum and product in Hybrid Epistemic Logic
 
-Language
-$\varphi::=x\ |\ p\ |\ \neg\phi\ |\ \phi\land\varphi\ |\ \Diamond_A\varphi\ |\ \downarrow_x\varphi$
+### Language
+$\varphi::=x\ |\ p\ |\ \neg\phi\ |\ \phi\land\varphi\ |\ \Diamond_A\varphi\ |\ \Diamond_B\varphi\ |\ \downarrow_x\varphi$
 
-Frame
-$\mathcal{F} = (W,R_A,R_B)$
-$W=\{(a,b)\ |\ a,b\in\mathbb{N},1<a<b, a+b\le 100\}$
-$(a,b)R_A(c,d)$ if $a+b = c+d$
-$(a,b)R_B(c,d)$ if $ab = cd$
+### Frame
 
-Check
+$\mathcal{F} = (W,R_A,R_B)$ where
+
+$W=$ { $(a,b)\ |\ a,b\in\mathbb{N},1<a<b, a+b\le 100$ }
+
+$(a,b)R_A(c,d)$ iff $a+b = c+d$
+
+$(a,b)R_B(c,d)$ iff $ab = cd$
+
+### Frame Check
+Find a couple $(a,b)$ where $\mathcal{F},(a,b)\vDash \varphi_1\land\psi\land\chi$ where
+
 $\varphi_1:=(\downarrow_x\Diamond_A\neg x)\land (\Box_A\downarrow_x\Diamond_B\neg x)$
+
 $\varphi_2:=(\downarrow_x\Diamond_A\neg x)\land (\Diamond_A\downarrow_x\Box_B x)$
+
 $\psi:=\downarrow_x\Box_B(\neg x\rightarrow\varphi_2)$
+
 $\chi:=\downarrow_x\Box_A(\neg x\rightarrow\neg \psi)$
-Find a couple $(a,b)$ where $\mathcal{F},(a,b)\vDash \varphi_1\land\psi\land\chi$
 
-$\varphi_1$ 为真使 $A$ 能够断言 $B$ 不知道答案。$\psi$ 为真使 $B$ 能够在 $A$ 断言后知道答案。$\chi$ 为真使 $A$ 能够在 $B$ 知道答案后知道答案。
+其中 $\varphi_1$ 为真使 $A$ 能够断言 $B$ 不知道答案。 $\psi$ 为真使 $B$ 能够在 $A$ 断言后知道答案。 $\chi$ 为真使 $A$ 能够在 $B$ 知道答案后知道答案。
 
-'''
+### Code Demo
+```python
 # 100以内质数列表
 primes = {
     2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37,
@@ -114,4 +123,4 @@ for a in range(2, 100):
 print("满足条件的二元组有：")
 for pair in result:
     print(pair)
-'''
+```
