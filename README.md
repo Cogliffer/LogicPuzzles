@@ -5,28 +5,28 @@
 ### Language
 $\varphi::=x\ |\ p\ |\ \neg\phi\ |\ \phi\land\varphi\ |\ \Diamond_A\varphi\ |\ \Diamond_B\varphi\ |\ \downarrow_x\varphi$
 
+$\Diamond_A\varphi$ 表示 $A$ 知道 $\varphi$， $\Diamond_B\varphi$ 表示 $B$ 知道 $\varphi$， $\downarrow_x\varphi$ 指将当前二元组记为 $x$。
+
 ### Frame
 
 $\mathcal{F} = (W,R_A,R_B)$ where
 
-$W=$ { $(a,b)\ |\ a,b\in\mathbb{N},1<a<b, a+b\le 100$ }
+$W=$ { $(a,b)\ |\ a,b\in\mathbb{N},1<a<b, a+b\le 100$ } 框架中的所有二元组
 
-$(a,b)R_A(c,d)$ iff $a+b = c+d$
+$(a,b)R_A(c,d)$ iff $a+b = c+d$ 其中 $R_A$ 关系是对 $A$ 不可区分的二元组，即和相同的二元组
 
-$(a,b)R_B(c,d)$ iff $ab = cd$
+$(a,b)R_B(c,d)$ iff $ab = cd$ 其中 $R_B$ 关系是对 $B$ 不可区分的二元组，即乘积相同的二元组
 
 ### Frame Check
 Find a couple $(a,b)$ where $\mathcal{F},(a,b)\vDash \varphi_1\land\psi\land\chi$ where
 
-$\varphi_1:=(\downarrow_x\Diamond_A\neg x)\land (\Box_A\downarrow_x\Diamond_B\neg x)$
+$\varphi_1:=(\downarrow_x\Diamond_A\neg x)\land (\Box_A\downarrow_x\Diamond_B\neg x)$ 为真时 $A$ 能够断言 $B$ 不知道答案；
 
-$\varphi_2:=(\downarrow_x\Diamond_A\neg x)\land (\Diamond_A\downarrow_x\Box_B x)$
+$\varphi_2:=(\downarrow_x\Diamond_A\neg x)\land (\Diamond_A\downarrow_x\Box_B x)$；
 
-$\psi:=\downarrow_x\Box_B(\neg x\rightarrow\varphi_2)$
+$\psi:=\downarrow_x\Box_B(\neg x\rightarrow\varphi_2)$ 为真时 $B$ 能够在 $A$ 知道 $B$ 不知道答案后知道答案；
 
-$\chi:=\downarrow_x\Box_A(\neg x\rightarrow\neg \psi)$
-
-其中 $\varphi_1$ 为真使 $A$ 能够断言 $B$ 不知道答案。 $\psi$ 为真使 $B$ 能够在 $A$ 断言后知道答案。 $\chi$ 为真使 $A$ 能够在 $B$ 知道答案后知道答案。
+$\chi:=\downarrow_x\Box_A(\neg x\rightarrow\neg \psi)$ 为真时 $A$ 能够在 $B$ 知道答案后知道答案。
 
 ### Code Demo
 ```python
@@ -124,3 +124,7 @@ print("满足条件的二元组有：")
 for pair in result:
     print(pair)
 ```
+### Complexity
+Hybrid Epistemic Logic > Dynamic Epistemic Logic ?
+
+表达能力与复杂度的平衡：刻画这个问题最合适的语言是什么？虽然动态认知逻辑是可判定的，但是其语言并没有直观的捕捉到这个问题的核心，尽管混合认知逻辑不可判定，但其语言直观的刻画了这个问题。所以，复杂性不是唯一的衡量价值的标准，语言对问题最直观的呈现也是重要标准。
